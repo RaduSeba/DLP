@@ -9,10 +9,11 @@ public class CharType extends AbstractType{
         super(line,column);
     }
 
+    private  static CharType instance =null;
+
     private CharType(){
         super(0,0);
     }
-    private  static CharType instance =null;
 
     public static  CharType getInstance()
     {

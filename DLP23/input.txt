@@ -15,10 +15,7 @@ def main(): {
 	input r;
 	print (double)2*r, '\n';
 	
-	print (double)3-4.5, ' ', 
-            (double)'0'/48.0, ' ',
-            (int)'0'%(int)'1', ' ',
-            0+(int)'1', '\n';
+
 	print 1<2, ' ',
 	      4>=3, ' ',
 	      5==5, ' ',
