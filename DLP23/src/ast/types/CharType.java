@@ -9,13 +9,16 @@ public class CharType extends AbstractType{
         super(line,column);
     }
 
-    private  static CharType instance;
+    private CharType(){
+        super(0,0);
+    }
+    private  static CharType instance =null;
 
-    public static  CharType getInstance(int line, int column)
+    public static  CharType getInstance()
     {
         if(instance==null)
         {
-            instance= new CharType(line, column);
+            instance= new CharType();
         }
         return  instance;
     }
@@ -40,13 +43,11 @@ public class CharType extends AbstractType{
 
     @Override
     public Type comparison(Type other,ASTNode node) {
-        if(this.equals(other))
+        if (other.equals(this) || other instanceof ErrorType){
             return IntType.getInstance();
+        }
 
-        else if(other instanceof ErrorType)
-            return other;
-        else
-            return super.comparison(other,node);
+        return super.comparison(other, node);
     }
     @Override
     public boolean isBuiltinType() {
@@ -55,12 +56,12 @@ public class CharType extends AbstractType{
 
     @Override
     public Type cast(Type type,ASTNode node) {
-        if (type.isBuiltinType()) {
+        if (type.equals(this) || type.equals(IntType.getInstance()) ||
+                type.equals(DoubleType.getInstance())){
             return this;
-        } else if (type instanceof ErrorType)
-            return type;
-        else
-            return super.cast(type,node);
+        }
+
+        return super.cast(type, node);
     }
 
     @Override

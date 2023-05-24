@@ -39,7 +39,7 @@ public class ArrayType extends AbstractType{
     public Type squareBrackets(Type type, ASTNode node) {
         if(type.equals(IntType.getInstance()))
         {
-            return this.getArrayType();
+            return this.arrayType;
         }
         else if(type instanceof ErrorType)
             return this.arrayType;

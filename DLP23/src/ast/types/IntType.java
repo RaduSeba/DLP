@@ -29,14 +29,11 @@ public class IntType extends AbstractType {
 
     @Override
     public Type arithmetic(Type other, ASTNode node) {
-        if(this.equals(other))
-        {
-            return this;
-        }
-        else if(other instanceof ErrorType)
+        if (other.equals(this) || other instanceof ErrorType){
             return other;
-        else
-            return super.arithmetic(other,node);
+        }
+
+        return super.arithmetic(other, node);
     }
 
     @Override
@@ -74,14 +71,12 @@ public class IntType extends AbstractType {
 
     @Override
     public Type cast(Type type, ASTNode node) {
-        if(type.isBuiltinType())
-        {
-            return  this;
+        if (type.equals(this) || type.equals(DoubleType.getInstance()) ||
+                type.equals(CharType.getInstance())){
+            return this;
         }
-        else if (type instanceof ErrorType)
-            return type;
-        else
-            return super.cast(type,node);
+
+        return super.cast(type, node);
     }
 
     @Override

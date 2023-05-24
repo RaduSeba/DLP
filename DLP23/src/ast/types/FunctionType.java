@@ -50,7 +50,12 @@ public class FunctionType extends AbstractType{
     }
     @Override
     public int numberOfBytes() {
-        return 0;
+        int total = 0;
+        for (Definition parameter : parameters){
+            total += parameter.getType().numberOfBytes();
+        }
+        total += returnType.numberOfBytes();
+        return  total;
     }
 
     public Type getType() {

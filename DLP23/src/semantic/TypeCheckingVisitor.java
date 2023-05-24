@@ -57,7 +57,7 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
         node.setLValue(false);
          super.visit(node, params);
 
-         node.setType(CharType.getInstance(node.getLine(), node.getColumn()));
+         node.setType(CharType.getInstance());
          return null;
     }
 
@@ -65,7 +65,7 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
     public Void visit(DoubleLiteral node, Type params) {
         node.setLValue(false);
          super.visit(node, params);
-         node.setType(DoubleType.getInstance(node.getLine(),node.getColumn()));
+         node.setType(DoubleType.getInstance());
          return null;
     }
 

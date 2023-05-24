@@ -11,24 +11,25 @@ public class DoubleType extends AbstractType{
         super(line, column);
     }
 
-    public static DoubleType getInstance(int line, int column)
+    private DoubleType(){
+        super(0,0);
+    }
+
+    public static DoubleType getInstance()
     {
         if(instance==null)
-            instance = new DoubleType(line, column);
+            instance = new DoubleType();
         return instance;
     }
 
 
     @Override
     public Type arithmetic(Type other,ASTNode node) {
-        if(this.equals(other))
-        {
-            return this;
-        }
-        else if(other instanceof ErrorType)
+        if (other.equals(this) || other instanceof ErrorType){
             return other;
-        else
-            return super.arithmetic(other,node);
+        }
+
+        return super.arithmetic(other, node);
     }
 
     @Override
@@ -38,13 +39,11 @@ public class DoubleType extends AbstractType{
 
     @Override
     public Type comparison(Type other, ASTNode node) {
-        if(this.equals(other))
-            return IntType.getInstance();
-
-        else if(other instanceof ErrorType)
+        if (other.equals(this) || other instanceof ErrorType){
             return other;
-        else
-            return super.comparison(other,node);
+        }
+
+        return super.comparison(other, node);
     }
     @Override
     public boolean isBuiltinType() {
@@ -53,22 +52,21 @@ public class DoubleType extends AbstractType{
 
     @Override
     public Type cast(Type type,ASTNode node) {
-        if (type.isBuiltinType()) {
+        if (type.equals(this) || type.equals(IntType.getInstance()) ||
+                type.equals(CharType.getInstance())){
             return this;
-        } else if (type instanceof ErrorType)
-            return type;
-        else
-            return super.cast(type,node);
+        }
+
+        return super.cast(type, node);
     }
 
     @Override
     public Type promotesTo(Type type,ASTNode node) {
-        if(this.equals(type))
-            return this;
-        else if(type instanceof ErrorType)
+        if (type.equals(this) || type instanceof ErrorType){
             return type;
-        else
-            return super.promotesTo(type,node);
+        }
+
+        return super.promotesTo(type, node);
     }
 
     @Override
