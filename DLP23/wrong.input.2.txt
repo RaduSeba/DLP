@@ -4,7 +4,13 @@ date: struct  {
   day:double;		# Error 1
 };
 
+
+
 def main(): {
+
+    while date.month < 3: {
+			date.year=1;
+		}
   input date.year;	# Error 2
 }
 

@@ -46,7 +46,7 @@ public class CodeGenerator {
     }
 
     public void pusha(int i){
-        out.println("\tpusha\t");
+        out.println("\tpusha\t" +i);
         out.flush();
     }
 
@@ -57,7 +57,7 @@ public class CodeGenerator {
     }
 
     public void add(Type type){
-        out.println("\tAdd"+type.suffix());
+        out.println("\tadd"+type.suffix());
         out.flush();
     }
 
@@ -173,8 +173,12 @@ public class CodeGenerator {
         out.flush();
     }
 
-    public void label(String label){
+    public void jmp(String label){
         out.println("\tjmp\t" + label);
+        out.flush();
+    }
+    public void label(String label){
+        out.println("\n " + label + ":");
         out.flush();
     }
 

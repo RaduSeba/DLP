@@ -167,9 +167,7 @@ public class AbstractVisitor<TP,TR>  implements  Visitor<TP,TR>{
     @Override
     public TR visit(Print node, TP params) {
 
-        for(Expression e:node.getExpressions())
-            e.accept(this, params);
-
+        node.getExpressions().forEach(expression -> expression.accept(this, params));
         return null;
     }
 

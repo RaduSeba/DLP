@@ -8,6 +8,10 @@ public class IntType extends AbstractType {
 
     private static IntType instance;
 
+    public IntType(int line, int column){
+        super(line, column);
+    }
+
     private IntType() {
         super(0,0);
     }
@@ -25,14 +29,11 @@ public class IntType extends AbstractType {
 
     @Override
     public Type arithmetic(Type other, ASTNode node) {
-        if(this.equals(other))
-        {
-            return this;
-        }
-        else if(other instanceof ErrorType)
+        if (other instanceof IntType || other instanceof ErrorType){
             return other;
-        else
-            return super.arithmetic(other,node);
+        }
+
+        return super.arithmetic(other, node);
     }
 
     @Override
@@ -42,7 +43,7 @@ public class IntType extends AbstractType {
 
     @Override
     public Type comparison(Type type,ASTNode node) {
-        if (type.equals(this) || type instanceof ErrorType){
+        if (type instanceof IntType || type instanceof ErrorType){
             return type;
         }
 
@@ -51,7 +52,7 @@ public class IntType extends AbstractType {
 
     @Override
     public Type logical(Type type, ASTNode node) {
-        if (type.equals(this) || type instanceof ErrorType){
+        if (type instanceof IntType || type instanceof ErrorType){
             return type;
         }
 
@@ -70,14 +71,12 @@ public class IntType extends AbstractType {
 
     @Override
     public Type cast(Type type, ASTNode node) {
-        if(type.isBuiltinType())
-        {
-            return  this;
+        if (type instanceof IntType || type instanceof DoubleType ||
+               type instanceof CharType){
+            return this;
         }
-        else if (type instanceof ErrorType)
-            return type;
-        else
-            return super.cast(type,node);
+
+        return super.cast(type, node);
     }
 
     @Override
@@ -89,7 +88,7 @@ public class IntType extends AbstractType {
 
     @Override
     public Type promotesTo(Type type,ASTNode node) {
-        if (type.equals(this) || type instanceof ErrorType){
+        if (type instanceof IntType || type instanceof ErrorType){
             return type;
         }
 
@@ -99,6 +98,11 @@ public class IntType extends AbstractType {
     @Override
     public int numberOfBytes() {
         return 2;
+    }
+
+    @Override
+    public String toString() {
+        return "int";
     }
 
     @Override

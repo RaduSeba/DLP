@@ -1,4 +1,5 @@
 package ast.types;
+
 import ast.ASTNode;
 import ast.definitions.Definition;
 import ast.expresions.Expression;
@@ -38,9 +39,23 @@ public class FunctionType extends AbstractType{
         return super.parenthesis(types,node);
     }
 
+
+    public int parameters(){
+        int total = 0;
+        for (Definition parameter : parameters){
+            total += parameter.getType().numberOfBytes();
+        }
+
+        return total;
+    }
     @Override
     public int numberOfBytes() {
-        return 0;
+        int total = 0;
+        for (Definition parameter : parameters){
+            total += parameter.getType().numberOfBytes();
+        }
+        total += returnType.numberOfBytes();
+        return  total;
     }
 
     public Type getType() {

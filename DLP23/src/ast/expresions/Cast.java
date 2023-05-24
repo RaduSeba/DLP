@@ -20,6 +20,10 @@ public class Cast extends  AbstractExpression{
         return expression;
     }
 
+    public Type getType()
+    {
+        return type;
+    }
 
     @Override
     public <TP, TR> TR accept(Visitor<TP, TR> v, TP params) {

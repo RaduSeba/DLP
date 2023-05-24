@@ -1,6 +1,5 @@
 package semantic;
 
-import ast.definitions.FieldDefinition;
 import ast.definitions.FuncDefinition;
 import ast.expresions.*;
 import ast.statements.*;
@@ -58,7 +57,7 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
         node.setLValue(false);
          super.visit(node, params);
 
-         node.setType(CharType.getInstance(node.getLine(), node.getColumn()));
+         node.setType(CharType.getInstance());
          return null;
     }
 
@@ -66,7 +65,7 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
     public Void visit(DoubleLiteral node, Type params) {
         node.setLValue(false);
          super.visit(node, params);
-         node.setType(DoubleType.getInstance(node.getLine(),node.getColumn()));
+         node.setType(DoubleType.getInstance());
          return null;
     }
 
@@ -74,26 +73,17 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
     public Void visit(Comparison node, Type params) {
         node.setLValue(false);
          super.visit(node, params);
-         node.setType(IntType.getInstance(node.getLine(),node.getColumn()));
+         node.setType(IntType.getInstance());
          return null;
     }
 
 
-    @Override
-    public Void visit(FieldDefinition node, Type params) {
-
-
-         super.visit(node, params);
-
-
-         return null;
-    }
 
     @Override
     public Void visit(IntLiteral node, Type params) {
         node.setLValue(false);
         super.visit(node, params);
-        node.setType(IntType.getInstance(node.getLine(),node.getColumn()));
+        node.setType(IntType.getInstance());
         return null;
     }
 
@@ -107,6 +97,7 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
 
     @Override
     public Void visit(FunctionInvocExpression node, Type params) {
+        node.setLValue(false);
         super.visit(node, params);
         node.setType(node.getName().getType().parenthesis(node.getArguments(),node));
         return null;
@@ -153,7 +144,7 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
     public Void visit(Condition node, Type params) {
          super.visit(node, params);
         if(!node.getCondition().getType().isLogical()){
-            new ErrorType(node.getCondition().getLine(), node.getCondition().getColumn(), node.getCondition().toString());
+            new ErrorType(node.getCondition().getLine(), node.getCondition().getColumn(), "Expected a logical argument in condition statement");
         }
          return null;
     }
@@ -162,7 +153,7 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
     public Void visit(While node, Type params) {
         super.visit(node, params);
         if (!node.getCondition().getType().isLogical()){
-            new ErrorType(node.getCondition().getLine(), node.getCondition().getColumn(), node.getCondition().toString());
+            new ErrorType(node.getCondition().getLine(), node.getCondition().getColumn(), "Expected a logical argument in while statement");
         }
         return null;
     }
