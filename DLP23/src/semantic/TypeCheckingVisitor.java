@@ -1,6 +1,5 @@
 package semantic;
 
-import ast.definitions.FieldDefinition;
 import ast.definitions.FuncDefinition;
 import ast.expresions.*;
 import ast.statements.*;
@@ -79,15 +78,6 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
     }
 
 
-    @Override
-    public Void visit(FieldDefinition node, Type params) {
-
-
-         super.visit(node, params);
-
-
-         return null;
-    }
 
     @Override
     public Void visit(IntLiteral node, Type params) {
@@ -107,6 +97,7 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
 
     @Override
     public Void visit(FunctionInvocExpression node, Type params) {
+        node.setLValue(false);
         super.visit(node, params);
         node.setType(node.getName().getType().parenthesis(node.getArguments(),node));
         return null;
