@@ -74,6 +74,12 @@ public class CharType extends AbstractType{
         return super.promotesTo(type, node);
     }
 
+
+    @Override
+    public String toString() {
+        return "char";
+    }
+
     @Override
     public char suffix() {
         return 'b';

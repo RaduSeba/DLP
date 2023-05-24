@@ -101,6 +101,11 @@ public class IntType extends AbstractType {
     }
 
     @Override
+    public String toString() {
+        return "int";
+    }
+
+    @Override
     public <TP, TR> TR accept(Visitor<TP, TR> v, TP params) {
         return v.visit(this,params);
     }

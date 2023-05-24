@@ -86,13 +86,13 @@ public class ExecuteCGVisitor extends AbstractCGVisitor<FuncDefinition, Void>{
             varDefinition.accept(this, params);
         }
 
-        codeGenerator.enter(node.getLocalVariablesBytes() * -1);
+        codeGenerator.enter(node.getLocalVariablesBytes() );
 
         for (Statement state : node.getStatements()){
             state.accept(this, node);
         }
         if (((FunctionType)node.getType()).getType() instanceof VoidType){
-            codeGenerator.ret(0, node.getLocalVariablesBytes() * -1,
+            codeGenerator.ret(0, node.getLocalVariablesBytes() ,
                     node.getType().numberOfBytes());
         }
         return null;
@@ -210,7 +210,7 @@ public class ExecuteCGVisitor extends AbstractCGVisitor<FuncDefinition, Void>{
         codeGenerator.line(node.getLine());
         codeGenerator.commentVariables("Return");
         node.getExpression().accept(valueCGVisitor, params);
-        codeGenerator.ret(node.getExpression().getType().numberOfBytes(), params.getLocalVariablesBytes() * -1,
+        codeGenerator.ret(node.getExpression().getType().numberOfBytes(), params.getLocalVariablesBytes(),
                 ((FunctionType)params.getType()).parameters());
         return null;
     }

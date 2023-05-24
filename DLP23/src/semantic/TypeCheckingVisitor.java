@@ -144,7 +144,7 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
     public Void visit(Condition node, Type params) {
          super.visit(node, params);
         if(!node.getCondition().getType().isLogical()){
-            new ErrorType(node.getCondition().getLine(), node.getCondition().getColumn(), node.getCondition().toString());
+            new ErrorType(node.getCondition().getLine(), node.getCondition().getColumn(), "Expected a logical argument in condition statement");
         }
          return null;
     }
@@ -153,7 +153,7 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
     public Void visit(While node, Type params) {
         super.visit(node, params);
         if (!node.getCondition().getType().isLogical()){
-            new ErrorType(node.getCondition().getLine(), node.getCondition().getColumn(), node.getCondition().toString());
+            new ErrorType(node.getCondition().getLine(), node.getCondition().getColumn(), "Expected a logical argument in while statement");
         }
         return null;
     }
