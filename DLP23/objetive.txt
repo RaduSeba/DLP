@@ -1,0 +1,13 @@
+Annotate the AST with the offsets of:
+- Global variables
+- Local variables
+- (Formal) parameters
+- Record fields
+
+AST modification: new getOffsetr():int  setOffset(int) in VarDefinition and Field record
+new numberofBytes():int method type
+
+implement the offsetVisitor(in a new codegenerator package)
+
+
+

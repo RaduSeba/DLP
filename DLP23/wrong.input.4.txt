@@ -1,0 +1,20 @@
+
+i:int;
+
+def f(a:int):int {
+  a:double;						# Error 1 a already defined
+  return 34.5;					# Error 2 return double when int needed
+}
+
+def g(b:int, b:double): {		# Error 3 two with the same name
+  return 3;						# Error 4 no return
+}
+
+def g(): {						# Error 5
+}
+
+def main(): {
+  f();       					# Error 6
+  f(3.2);    					# Error 7
+  i = g();     					# Error 8 void
+}

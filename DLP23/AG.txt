@@ -1,0 +1,43 @@
+
+ 1. Arithmetic: expression1 ->expression2 (+|-|*|/) expression3
+ experession1.type() == expression2.type().Arithmetic(expression3.getType())
+
+
+2. UnaryMinus : expression1 -> expression2
+expression1.type==expression2.type.Arithmetic()
+
+
+3.Comparison: expression1 -> expression2 ('>='|'=='| '>'|'<'|'<='|'!=') expression3
+expression1.type==expression2.type.Comparison(expression3.type())
+
+
+4.Logic expression1 -> expression2 ('&&'|'||') expression3
+expression1.type==expression2.type.Logical(expression3.type())
+
+
+5 Negation: expression1 -> expression2
+expression1.type==expression2.type.Logical()
+
+
+6. Assigment: statement ->  expression1 '=' expression2
+ expression1.type==expression2.type
+
+
+7.Function Paramenters and ReturnType
+return : statement -> expression
+expression.type.mustbe(statement.returnType())
+
+8.Cast expression1->expression2
+expression1.type.Cast(expression2.type)
+
+9. Indexing expression1 -> expression2 expression3
+expression1.type==expression2.type.sqarebrackets(expression3.type)
+
+10.FieldAcces:expression -> expression1.field
+expression.type==epression1.type.dot(field)
+
+11.Invocation expression -> expression2(List<expression>)
+expression.type==expression2.type.paranthesis(List<expression>)
+
+
+arguments.stream().map(exp->exp.type).toList()

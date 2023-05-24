@@ -1,0 +1,4 @@
+ struct {
+    	integer: int;
+    	character: char;
+  	};
