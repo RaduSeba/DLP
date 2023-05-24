@@ -27,7 +27,7 @@ public class CharType extends AbstractType{
 
     @Override
     public Type arithmetic(Type other, ASTNode node) {
-        if(this.equals(other))
+        if(other instanceof CharType)
         {
            return IntType.getInstance();
         }
@@ -44,7 +44,7 @@ public class CharType extends AbstractType{
 
     @Override
     public Type comparison(Type other,ASTNode node) {
-        if (other.equals(this) || other instanceof ErrorType){
+        if (other instanceof CharType || other instanceof ErrorType){
             return IntType.getInstance();
         }
 
@@ -57,8 +57,8 @@ public class CharType extends AbstractType{
 
     @Override
     public Type cast(Type type,ASTNode node) {
-        if (type.equals(this) || type.equals(IntType.getInstance()) ||
-                type.equals(DoubleType.getInstance())){
+        if (type instanceof IntType || type instanceof DoubleType ||
+                type instanceof CharType){
             return this;
         }
 
@@ -67,7 +67,7 @@ public class CharType extends AbstractType{
 
     @Override
     public Type promotesTo(Type type,ASTNode node) {
-        if (type.equals(this) || type instanceof ErrorType){
+        if (type instanceof CharType|| type instanceof ErrorType){
             return type;
         }
 

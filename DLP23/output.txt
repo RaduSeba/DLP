@@ -1,6 +1,4 @@
-	' * ast.types.IntType@25618e91 integer (offset 0)
-	' * ast.types.CharType@546a03af character (offset 2)
-	' * ast.types.DoubleType@721e0f4f real (offset 3)
+	' * ast.types.StructType@3ecf72fd date (offset 0)
 
 ' Invocation to the main function
 call main
@@ -14,4 +12,11 @@ halt
 	' * Local variables
 	enter	0
 
-#line	6
+#line	8
+	' * Read
+	pusha	
+	pushi	0
+	Addi
+	ini
+	storei
+	ret	0, 0, 0

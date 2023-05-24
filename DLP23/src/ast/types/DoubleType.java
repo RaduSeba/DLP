@@ -25,7 +25,7 @@ public class DoubleType extends AbstractType{
 
     @Override
     public Type arithmetic(Type other,ASTNode node) {
-        if (other.equals(this) || other instanceof ErrorType){
+        if (other instanceof DoubleType || other instanceof ErrorType){
             return other;
         }
 
@@ -39,7 +39,7 @@ public class DoubleType extends AbstractType{
 
     @Override
     public Type comparison(Type other, ASTNode node) {
-        if (other.equals(this) || other instanceof ErrorType){
+        if (other instanceof DoubleType || other instanceof ErrorType){
             return other;
         }
 
@@ -52,8 +52,8 @@ public class DoubleType extends AbstractType{
 
     @Override
     public Type cast(Type type,ASTNode node) {
-        if (type.equals(this) || type.equals(IntType.getInstance()) ||
-                type.equals(CharType.getInstance())){
+        if (type instanceof IntType || type instanceof DoubleType ||
+                type instanceof CharType){
             return this;
         }
 
@@ -62,7 +62,7 @@ public class DoubleType extends AbstractType{
 
     @Override
     public Type promotesTo(Type type,ASTNode node) {
-        if (type.equals(this) || type instanceof ErrorType){
+        if (type instanceof DoubleType|| type instanceof ErrorType){
             return type;
         }
 

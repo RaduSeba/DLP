@@ -29,7 +29,7 @@ public class IntType extends AbstractType {
 
     @Override
     public Type arithmetic(Type other, ASTNode node) {
-        if (other.equals(this) || other instanceof ErrorType){
+        if (other instanceof IntType || other instanceof ErrorType){
             return other;
         }
 
@@ -43,7 +43,7 @@ public class IntType extends AbstractType {
 
     @Override
     public Type comparison(Type type,ASTNode node) {
-        if (type.equals(this) || type instanceof ErrorType){
+        if (type instanceof IntType || type instanceof ErrorType){
             return type;
         }
 
@@ -52,7 +52,7 @@ public class IntType extends AbstractType {
 
     @Override
     public Type logical(Type type, ASTNode node) {
-        if (type.equals(this) || type instanceof ErrorType){
+        if (type instanceof IntType || type instanceof ErrorType){
             return type;
         }
 
@@ -71,8 +71,8 @@ public class IntType extends AbstractType {
 
     @Override
     public Type cast(Type type, ASTNode node) {
-        if (type.equals(this) || type.equals(DoubleType.getInstance()) ||
-                type.equals(CharType.getInstance())){
+        if (type instanceof IntType || type instanceof DoubleType ||
+               type instanceof CharType){
             return this;
         }
 
@@ -88,7 +88,7 @@ public class IntType extends AbstractType {
 
     @Override
     public Type promotesTo(Type type,ASTNode node) {
-        if (type.equals(this) || type instanceof ErrorType){
+        if (type instanceof IntType || type instanceof ErrorType){
             return type;
         }
 

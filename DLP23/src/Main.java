@@ -1,13 +1,15 @@
+import ast.ASTNode;
 import codegenerator.CodeGenerator;
 import codegenerator.ExecuteCGVisitor;
 import codegenerator.OffSetVisitor;
-import org.antlr.v4.runtime.*;
-import introspector.model.IntrospectorModel;
-
-import ast.ASTNode;
 import errorhandler.ErrorHandler;
+import introspector.model.IntrospectorModel;
 import introspector.view.IntrospectorView;
-import parser.*;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import parser.PmmLexer;
+import parser.PmmParser;
 import semantic.IdentificationVisitor;
 import semantic.TypeCheckingVisitor;
 
@@ -40,8 +42,8 @@ public class Main {
 			// * The AST is shown
 			ast.accept(new OffSetVisitor(),null);
 			ast.accept(new ExecuteCGVisitor(new CodeGenerator(args[1], args[0])), null);
-			//IntrospectorModel model=new IntrospectorModel("Program", ast);
-			//new IntrospectorView("Introspector", model);
+			IntrospectorModel model=new IntrospectorModel("Program", ast);
+			new IntrospectorView("Introspector", model);
 		}
 	}
 }

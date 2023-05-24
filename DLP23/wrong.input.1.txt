@@ -5,6 +5,5 @@ r: double;
 def main(): {
 
     i=1;
-    c='a';
 }
 
