@@ -170,4 +170,6 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
         super.visit(node, ((FunctionType)node.getType()).getType());
         return null;
     }
+
+
 }

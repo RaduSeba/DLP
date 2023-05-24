@@ -1,9 +1,12 @@
-c: char;
-i: int;
-r: double;
+integer:int;
+character:char;
+real:double;
 
 def main(): {
-
-    i=1;
+  input integer;
+  character = 8.5;	# Error 1
+  3 = integer;		# Error 2
+  input integer+3; 	# Error 3
 }
+
 
