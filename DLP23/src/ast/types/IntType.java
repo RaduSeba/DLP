@@ -8,6 +8,10 @@ public class IntType extends AbstractType {
 
     private static IntType instance;
 
+    public IntType(int line, int column){
+        super(line, column);
+    }
+
     private IntType() {
         super(0,0);
     }

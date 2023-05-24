@@ -173,8 +173,12 @@ public class CodeGenerator {
         out.flush();
     }
 
-    public void label(String label){
+    public void jmp(String label){
         out.println("\tjmp\t" + label);
+        out.flush();
+    }
+    public void label(String label){
+        out.println("\n " + label + ":");
         out.flush();
     }
 
