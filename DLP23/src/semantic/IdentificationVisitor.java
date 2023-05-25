@@ -48,7 +48,7 @@ public class IdentificationVisitor extends AbstractVisitor<Void,Void>{
         if(node.getDefinition()==null)
         {
             node.setDefinition(new VarDefinition(node.getLine(),node.getColumn()
-                    ,node.getName(),new ErrorType(node.getLine(),node.getColumn(),"Error IdentificationVisitor: variable  is already defined")));
+                    ,node.getName(),new ErrorType(node.getLine(),node.getColumn(),"Error IdentificationVisitor: variable "+node.getName()+" is already defined")));
         }
         return null;
     }

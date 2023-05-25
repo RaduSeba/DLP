@@ -233,14 +233,14 @@ public class ExecuteCGVisitor extends AbstractCGVisitor<FuncDefinition, Void>{
         codeGenerator.line(node.getLine());
         int condition = codeGenerator.getLabel();
         int end = codeGenerator.getLabel();
-        codeGenerator.label("condition" + condition);
+        codeGenerator.label("label" + condition);
         node.getCondition().accept(valueCGVisitor, params);
-        codeGenerator.jz("end" + end);
+        codeGenerator.jz("label" + end);
         for (Statement state : node.getBody()){
             state.accept(this, params);
         }
-        codeGenerator.jmp("condition" + condition);
-        codeGenerator.label("end" + end);
+        codeGenerator.jmp("label" + condition);
+        codeGenerator.label("label" + end);
         return null;
     }
 }

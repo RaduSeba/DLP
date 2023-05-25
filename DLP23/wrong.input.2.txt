@@ -1,10 +1,12 @@
-date: struct  {
-  day:int;
-  month:int;
-  day:double;		# Error 1
-};
+integer:int;
+character:char;
+real, integer:double; # Error 1
 
-def main(): {
-  input date.year;	# Error 2
+def p(a:int): {
+  a:char;             # Error 2
 }
 
+def main(): {
+  integer= integer+'a';
+
+}
