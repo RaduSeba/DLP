@@ -69,6 +69,11 @@ public class FieldDefinition extends AbstractDefinition {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return name + ": " + type;
+    }
+
 
     @Override
     public <TP, TR> TR accept(Visitor<TP, TR> v, TP params) {

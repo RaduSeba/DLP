@@ -1,4 +1,4 @@
-// Generated from java-escape by ANTLR 4.11.1
+// Generated from C:/Users/Seba/DLP/DLP23/src/parser\Pmm.g4 by ANTLR 4.12.0
 package parser;
 
     import ast.expresions.*;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
 public class PmmParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.11.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.12.0", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -105,7 +105,7 @@ public class PmmParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "java-escape"; }
+	public String getGrammarFileName() { return "Pmm.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -203,7 +203,7 @@ public class PmmParser extends Parser {
 			setState(73);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 4254165118984L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 4254165118984L) != 0)) {
 				{
 				{
 				setState(68);
@@ -476,7 +476,7 @@ public class PmmParser extends Parser {
 						setState(127);
 						((ExpressionContext)_localctx).OP = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 114688L) != 0) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 114688L) != 0)) ) {
 							((ExpressionContext)_localctx).OP = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -509,7 +509,7 @@ public class PmmParser extends Parser {
 						}
 						setState(133);
 						((ExpressionContext)_localctx).exp2 = expression(9);
-						   new Arithmetic((((ExpressionContext)_localctx).exp1!=null?(((ExpressionContext)_localctx).exp1.start):null).getLine(),   (((ExpressionContext)_localctx).exp1!=null?(((ExpressionContext)_localctx).exp1.start):null).getCharPositionInLine()+1, ((ExpressionContext)_localctx).exp1.ast,  ((ExpressionContext)_localctx).OP.getText()   ,((ExpressionContext)_localctx).exp2.ast );   
+						  ((ExpressionContext)_localctx).ast =   new Arithmetic((((ExpressionContext)_localctx).exp1!=null?(((ExpressionContext)_localctx).exp1.start):null).getLine(),   (((ExpressionContext)_localctx).exp1!=null?(((ExpressionContext)_localctx).exp1.start):null).getCharPositionInLine()+1, ((ExpressionContext)_localctx).exp1.ast,  ((ExpressionContext)_localctx).OP.getText()   ,((ExpressionContext)_localctx).exp2.ast );   
 						}
 						break;
 					case 3:
@@ -545,7 +545,7 @@ public class PmmParser extends Parser {
 						setState(142);
 						((ExpressionContext)_localctx).OP = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 66060288L) != 0) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 66060288L) != 0)) ) {
 							((ExpressionContext)_localctx).OP = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -1299,7 +1299,7 @@ public class PmmParser extends Parser {
 					setState(279); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( ((_la) & ~0x3f) == 0 && ((1L << _la) & 4254165118984L) != 0 );
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 4254165118984L) != 0) );
 				setState(281);
 				match(T__7);
 				}
@@ -1782,7 +1782,7 @@ public class PmmParser extends Parser {
 			setState(346);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & 2013266432L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2013266432L) != 0)) {
 				{
 				setState(343);
 				((Func_defContext)_localctx).type = type();
@@ -1816,7 +1816,7 @@ public class PmmParser extends Parser {
 			setState(365);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 4254165118984L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 4254165118984L) != 0)) {
 				{
 				{
 				setState(360);
@@ -1999,7 +1999,7 @@ public class PmmParser extends Parser {
 			setState(411);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 4254165118984L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 4254165118984L) != 0)) {
 				{
 				{
 				setState(406);

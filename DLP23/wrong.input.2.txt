@@ -1,14 +1,10 @@
-date: struct  { 
+date: struct  {
   day:int;
   month:int;
   day:double;		# Error 1
 };
 
-
-
 def main(): {
-
-
   input date.year;	# Error 2
 }
 

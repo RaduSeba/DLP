@@ -41,7 +41,7 @@ public class CodeGenerator {
 
 
     public void push(double d){
-        out.println("\tpushf\t"+(int)d);
+        out.println("\tpushf\t"+d);
         out.flush();
     }
 
