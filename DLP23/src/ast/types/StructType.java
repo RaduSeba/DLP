@@ -48,6 +48,11 @@ public class StructType extends AbstractType{
     }
 
     @Override
+    public String toString() {
+        return "struct {" + fields.toString() + "}";
+    }
+
+    @Override
     public <TP, TR> TR accept(Visitor<TP, TR> v, TP params) {
         return v.visit(this,params);
     }

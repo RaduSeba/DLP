@@ -22,9 +22,10 @@ public class IntType extends AbstractType {
         return instance;
     }
 
+
     @Override
     public boolean isLogical() {
-        return false;
+        return true;
     }
 
     @Override

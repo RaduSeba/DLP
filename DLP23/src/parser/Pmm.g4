@@ -28,7 +28,7 @@ expression  returns [ Expression ast] :
                 | '!' e1=expression{ $ast = new Not($e1.start.getLine(), $e1.start.getCharPositionInLine()+1, $e1.ast );   }
                 | '-' e1=expression {$ast = new UnaryMinus($e1.start.getLine(), $e1.start.getCharPositionInLine()+1, $e1.ast);  }
                  | e1=expression OP=('*'|'/'|'%') e2=expression { $ast = new  Arithmetic($e1.start.getLine(),$e1.start.getCharPositionInLine()+1,$e1.ast,$OP.text,$e2.ast);  }
-                | exp1= expression OP=('+'|'-') exp2= expression {   new Arithmetic($exp1.start.getLine(),   $exp1.start.getCharPositionInLine()+1, $exp1.ast,  $OP.getText()   ,$exp2.ast );   }
+                | exp1= expression OP=('+'|'-') exp2= expression {  $ast=  new Arithmetic($exp1.start.getLine(),   $exp1.start.getCharPositionInLine()+1, $exp1.ast,  $OP.getText()   ,$exp2.ast );   }
                 | e1=expression OP=('&&'|'||') e2=expression {$ast = new Logic($e1.start.getLine(), $e1.start.getCharPositionInLine()+1,$e1.ast,$e2.ast,$OP.text);}
                 | e1=expression OP= ('>='|'=='| '>'|'<'|'<='|'!=') e2=expression {$ast = new Comparison($e1.start.getLine(),$e1.start.getCharPositionInLine()+1,$e1.ast,$e2.ast,$OP.text);}
                 | f=function_call_expression{$ast=$f.ast;}

@@ -73,6 +73,10 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
     public Void visit(Comparison node, Type params) {
         node.setLValue(false);
          super.visit(node, params);
+         if(node.getLeft().getType() instanceof StructType)
+         {
+             new ErrorType(node.getLine(), node.getColumn(), "Cannot compare a struct");
+         }
          node.setType(IntType.getInstance());
          return null;
     }
@@ -132,7 +136,7 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
         super.visit(node, params);
         node.getExpressions().forEach(expression -> {
             if (!expression.getLValue()){
-                new ErrorType(expression.getLine(), expression.getColumn(), expression.toString());
+                new ErrorType(expression.getLine(), expression.getColumn(), "Cannot input this");
             }
         });
         return null;
@@ -170,4 +174,6 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
         super.visit(node, ((FunctionType)node.getType()).getType());
         return null;
     }
+
+
 }
