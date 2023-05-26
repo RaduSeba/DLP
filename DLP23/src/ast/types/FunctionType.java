@@ -30,7 +30,7 @@ public class FunctionType extends AbstractType{
         if(types.size()==parameters.size()){
             for(int i=0;i<types.size();i++)
             {
-                if(parameters.get(i).getType().promotesTo(types.get(i).getType(),node) instanceof
+                if(types.get(i).getType().promotesTo(parameters.get(i).getType(),node) instanceof
                         ErrorType )
                     return null;
             }

@@ -46,8 +46,8 @@ public class ValueCGVisitor  extends AbstractCGVisitor<FuncDefinition,Void>{
     public Void visit(ArrayIndexer node, FuncDefinition params) {
 
          /*
-        Value[[ArrayAccess: expression -> left: expression right: expression]]()=
-            Address[[ArrayAccess]]()
+        Value[[ArrayIndex: expression -> left: expression right: expression]]()=
+            Address[[ArrayIndex]]()
             <LOAD> ArrayAccess.type
          */
         node.accept(addressCGVisitor, params);

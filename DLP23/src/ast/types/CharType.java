@@ -31,6 +31,14 @@ public class CharType extends AbstractType{
         {
            return IntType.getInstance();
         }
+        else if(other instanceof IntType)
+        {
+            return IntType.getInstance();
+        }
+        else if(other instanceof DoubleType)
+        {
+            return DoubleType.getInstance();
+        }
         else if(other instanceof ErrorType)
             return other;
         else
@@ -67,7 +75,7 @@ public class CharType extends AbstractType{
 
     @Override
     public Type promotesTo(Type type,ASTNode node) {
-        if (type instanceof CharType|| type instanceof ErrorType){
+        if (type instanceof CharType|| type instanceof ErrorType|| type instanceof IntType || type instanceof DoubleType){
             return type;
         }
 

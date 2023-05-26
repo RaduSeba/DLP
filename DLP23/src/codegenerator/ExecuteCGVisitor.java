@@ -133,7 +133,7 @@ public class ExecuteCGVisitor extends AbstractCGVisitor<FuncDefinition, Void>{
     @Override
     public Void visit(Condition node, FuncDefinition params) {
         /*
-        Execute[[IfElse : statement -> expr ifBody: statement* elseBody: statement*]]()=
+        Execute[[Condition : statement -> expr ifBody: statement* elseBody: statement*]]()=
 	        int else = cg.getLabel();
             int end = cg.getLabel();
             Value[[expr]]()

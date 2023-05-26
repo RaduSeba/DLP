@@ -1,0 +1,25 @@
+def f(a:int, b:double):int {
+
+	return b;  #error
+}
+
+def main(): {
+	character:char;
+	integer:int;
+
+    pair:struct {
+		a:int;
+		b:double;
+	};
+
+	integer='a'; #error
+	character=3.3; #error
+
+    print pair+integer, ' ', #error
+                f==3, ' '; #error
+
+
+	print f(8.4,'c'); #error
+
+
+}

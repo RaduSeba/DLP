@@ -77,6 +77,10 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
          {
              new ErrorType(node.getLine(), node.getColumn(), "Cannot compare a struct");
          }
+        if(node.getLeft().getType() instanceof FunctionType)
+        {
+            new ErrorType(node.getLine(), node.getColumn(), "Cannot compare a function");
+        }
          node.setType(IntType.getInstance());
          return null;
     }

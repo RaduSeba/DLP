@@ -25,7 +25,7 @@ public class DoubleType extends AbstractType{
 
     @Override
     public Type arithmetic(Type other,ASTNode node) {
-        if (other instanceof DoubleType || other instanceof ErrorType){
+        if (other instanceof DoubleType || other instanceof ErrorType || other instanceof IntType|| other instanceof CharType){
             return other;
         }
 
@@ -62,7 +62,7 @@ public class DoubleType extends AbstractType{
 
     @Override
     public Type promotesTo(Type type,ASTNode node) {
-        if (type instanceof DoubleType|| type instanceof ErrorType){
+        if ( type instanceof ErrorType||  type instanceof DoubleType){
             return type;
         }
 

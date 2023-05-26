@@ -1,0 +1,28 @@
+def f(a:int, b:double):double {
+
+	return a+1;
+}
+
+def main(): {
+	real:double;
+	integer:int;
+
+	integer='a';
+	real=integer;
+
+
+
+	print real+1, ' ',
+            'a'-integer, ' ',
+            real/'a', ' ',
+            'a'*'b', '\n';
+
+	print 'a'=='a', ' ',
+	      'a'>=integer, ' ',
+	      integer<real, ' ',
+	      'a'!=real+1, ' ';
+
+	print f(integer,'c');
+
+
+}
