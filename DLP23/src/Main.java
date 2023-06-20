@@ -1,7 +1,4 @@
 import ast.ASTNode;
-import codegenerator.CodeGenerator;
-import codegenerator.ExecuteCGVisitor;
-import codegenerator.OffSetVisitor;
 import errorhandler.ErrorHandler;
 import introspector.model.IntrospectorModel;
 import introspector.view.IntrospectorView;
@@ -10,8 +7,6 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import parser.PmmLexer;
 import parser.PmmParser;
-import semantic.IdentificationVisitor;
-import semantic.TypeCheckingVisitor;
 
 public class Main {
 	
@@ -30,8 +25,8 @@ public class Main {
 		PmmParser parser = new PmmParser(tokens);	
 		ASTNode ast = parser.program().ast;
 
-		ast.accept(new IdentificationVisitor(), null);
-		ast.accept(new TypeCheckingVisitor(),null);
+		//ast.accept(new IdentificationVisitor(), null);
+		//ast.accept(new TypeCheckingVisitor(),null);
 
 		// * Check errors
 		if(ErrorHandler.getInstance().anyError()){
@@ -40,8 +35,8 @@ public class Main {
 		}
 		else{
 			// * The AST is shown
-			ast.accept(new OffSetVisitor(),null);
-			ast.accept(new ExecuteCGVisitor(new CodeGenerator(args[1], args[0])), null);
+			//ast.accept(new OffSetVisitor(),null);
+			//ast.accept(new ExecuteCGVisitor(new CodeGenerator(args[1], args[0])), null);
 			IntrospectorModel model=new IntrospectorModel("Program", ast);
 			new IntrospectorView("Introspector", model);
 		}

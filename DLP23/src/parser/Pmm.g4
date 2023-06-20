@@ -77,6 +77,7 @@ statement returns [Statement ast] : f=function_call_statement ';' {$ast= $f.ast;
             | w= while {$ast = $w.ast;}
             | a =assignation {$ast = $a.ast;}
 
+
          ;
 
 
@@ -125,12 +126,17 @@ simple_def returns [Definition ast]: ID ':' type {$ast = new VarDefinition ($ID.
 
     ;
 
+assign_def returns [Definition ast]: ID ':' type '=' e1=expression  {$ast = new AssignDefinition($ID.getLine(),$ID.getCharPositionInLine()+1, $e1.ast, $ID.text, $type.ast);}
+            ;
+
 multi_def returns [List<Definition> ast = new ArrayList<Definition>()] :  id1=ID {$ast.add(new VarDefinition($id1.getLine(), $id1.getCharPositionInLine()+1, $id1.text, null));}
            (','id2=ID {if($ast.contains(new VarDefinition($id2.getLine(), $id2.getCharPositionInLine()+1, $id2.text, null))){new ErrorType($id2.getLine(), $id2.getCharPositionInLine()+1, "Duplicate variable definition error: " + $id2.text);}else{$ast.add(new VarDefinition($id2.getLine(), $id2.getCharPositionInLine()+1, $id2.text, null));}})+ ':' type {for(Definition d: $ast){d.setType($type.ast);}}
          ;
 
 var_def returns [List<Definition> ast = new ArrayList<Definition>()]: simple_def {$ast.add($simple_def.ast);}
         | multi_def {$ast.addAll($multi_def.ast);}
+        | assign_def  {$ast.add($assign_def.ast);}
+
 
     ;
 

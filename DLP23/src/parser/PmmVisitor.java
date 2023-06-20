@@ -133,6 +133,12 @@ public interface PmmVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSimple_def(PmmParser.Simple_defContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link PmmParser#assign_def}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAssign_def(PmmParser.Assign_defContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link PmmParser#multi_def}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
