@@ -126,6 +126,21 @@ public class AbstractCGVisitor<TP,TR> implements Visitor<TP,TR> {
     }
 
     @Override
+    public TR visit(Forloop node, TP params) {
+        return null;
+    }
+
+    @Override
+    public TR visit(Increment node, TP params) {
+        return null;
+    }
+
+    @Override
+    public TR visit(Decrement node, TP params) {
+        return null;
+    }
+
+    @Override
     public TR visit(ArrayType node, TP params) {
         return null;
     }

@@ -163,6 +163,34 @@ public class TypeCheckingVisitor extends AbstractVisitor<Type,Void>{
     }
 
     @Override
+    public Void visit(Forloop node, Type params) {
+
+        super.visit(node, params);
+
+        if (!node.getCondition().getType().isLogical()){
+            new ErrorType(node.getCondition().getLine(), node.getCondition().getColumn(), "Expected a logical argument in forloop statement");
+        }
+
+
+
+
+
+        return null;
+    }
+
+    @Override
+    public Void visit(Increment node, Type params) {
+
+        super.visit(node, params);
+        if (!node.getExpression().getLValue()){
+            new ErrorType(node.getLine(), node.getColumn(), "Error in increment");
+        }
+
+        return null;
+
+    }
+
+    @Override
     public Void visit(Return node, Type params) {
          super.visit(node, params);
          node.getExpression().setType(node.getExpression().getType().promotesTo(params,node));

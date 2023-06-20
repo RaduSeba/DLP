@@ -4,12 +4,7 @@ import ast.definitions.FieldDefinition;
 import ast.definitions.FuncDefinition;
 import ast.definitions.VarDefinition;
 import ast.expresions.*;
-import ast.statements.Assignment;
-import ast.statements.Condition;
-import ast.statements.Input;
-import ast.statements.Return;
-import ast.statements.Print;
-import ast.statements.While;
+import ast.statements.*;
 import ast.types.*;
 
 public interface Visitor<TP,TR> {
@@ -42,6 +37,9 @@ public interface Visitor<TP,TR> {
     public TR visit ( Print node, TP params );
     public TR visit (Return node, TP params );
     public TR visit (While node , TP params);
+    public TR visit (Forloop node , TP params);
+    public TR visit (Increment node , TP params);
+    public TR visit (Decrement node , TP params);
 
 
     public TR visit (ArrayType node , TP params);

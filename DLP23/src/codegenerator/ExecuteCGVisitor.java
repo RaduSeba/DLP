@@ -8,6 +8,7 @@ import ast.expresions.Expression;
 import ast.expresions.FunctionInvocExpression;
 import ast.statements.*;
 import ast.types.FunctionType;
+import ast.types.IntType;
 import ast.types.VoidType;
 
 public class ExecuteCGVisitor extends AbstractCGVisitor<FuncDefinition, Void>{
@@ -241,6 +242,41 @@ public class ExecuteCGVisitor extends AbstractCGVisitor<FuncDefinition, Void>{
         }
         codeGenerator.jmp("label" + condition);
         codeGenerator.label("label" + end);
+        return null;
+    }
+
+    @Override
+    public Void visit(Increment node, FuncDefinition params) {
+
+
+        codeGenerator.line(node.getLine());
+        codeGenerator.commentVariables("Assignment");
+        node.getExpression().accept(addressCGVisitor, params);
+        node.getExpression().accept(valueCGVisitor, params);
+        codeGenerator.push(1);
+        codeGenerator.add(IntType.getInstance());
+        codeGenerator.store(node.getExpression().getType());
+        return null;
+    }
+
+    @Override
+    public Void visit(Forloop node, FuncDefinition params) {
+        codeGenerator.line(node.getLine());
+        int start = codeGenerator.getLabel();
+        int end = codeGenerator.getLabel();
+        node.getStatementAssign().accept(this,params);
+
+        codeGenerator.label("label" + start);
+        node.getCondition().accept(valueCGVisitor,params);
+        codeGenerator.jz("label" + end);
+        for (Statement state : node.getBody()){
+            state.accept(this, params);
+
+        }
+        node.getStatementIncrement().accept(this,params);
+        codeGenerator.jmp("label" + start);
+        codeGenerator.label("label" + end);
+
         return null;
     }
 }

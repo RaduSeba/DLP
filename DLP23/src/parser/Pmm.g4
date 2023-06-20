@@ -76,6 +76,8 @@ statement returns [Statement ast] : f=function_call_statement ';' {$ast= $f.ast;
             | p= print {$ast = $p.ast;}
             | w= while {$ast = $w.ast;}
             | a =assignation {$ast = $a.ast;}
+            | fo=forloop {$ast= $fo.ast; }
+
 
          ;
 
@@ -115,6 +117,28 @@ print returns [Statement ast] : 'print' es=expressions ';' {$ast = new Print($es
 while  returns [Statement ast]: 'while' e1=expression ':' b=body {$ast = new While($e1.start.getLine(),$e1.start.getCharPositionInLine()+1,$e1.ast,$b.ast);}
 
         ;
+
+forloop returns [Statement ast]: 'for'  s1=assignation2 ';' e1=expression ';' s2= incrementOrDecrement ':' b=body {$ast = new Forloop($e1.start.getLine(),$e1.start.getCharPositionInLine()+1,$s1.ast,$e1.ast,$s2.ast,$b.ast);}
+
+            ;
+
+incrementOrDecrement returns [Statement ast]:
+                i=increment {$ast= $i.ast; }
+               | d= decrement {{$ast= $d.ast; }}
+    ;
+
+assignation2 returns [Statement ast]: e1= expression '=' e2= expression  {$ast = new Assignment($e1.start.getLine(),$e1.start.getCharPositionInLine()+1,$e1.ast,$e2.ast);}
+            ;
+
+increment returns [Statement ast]: e1= expression '++' {$ast = new Increment($e1.start.getLine(),$e1.start.getCharPositionInLine()+1,$e1.ast);}
+
+                        ;
+
+ decrement returns [Statement ast]: e1= expression '--' {$ast = new Decrement($e1.start.getLine(),$e1.start.getCharPositionInLine()+1,$e1.ast);}
+
+                                                ;
+
+
 
 assignation returns [Statement ast]: e1= expression '=' e2= expression ';' {$ast = new Assignment($e1.start.getLine(),$e1.start.getCharPositionInLine()+1,$e1.ast,$e2.ast);}
             ;

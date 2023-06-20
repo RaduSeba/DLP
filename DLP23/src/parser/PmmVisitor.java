@@ -121,6 +121,36 @@ public interface PmmVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitWhile(PmmParser.WhileContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link PmmParser#forloop}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitForloop(PmmParser.ForloopContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PmmParser#incrementOrDecrement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIncrementOrDecrement(PmmParser.IncrementOrDecrementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PmmParser#assignation2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAssignation2(PmmParser.Assignation2Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link PmmParser#increment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIncrement(PmmParser.IncrementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PmmParser#decrement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDecrement(PmmParser.DecrementContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link PmmParser#assignation}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

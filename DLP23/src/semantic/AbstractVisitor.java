@@ -189,6 +189,31 @@ public class AbstractVisitor<TP,TR>  implements  Visitor<TP,TR>{
     }
 
     @Override
+    public TR visit(Forloop node, TP params) {
+        node.getStatementAssign().accept(this,params);
+        node.getCondition().accept(this, params);
+        node.getStatementIncrement().accept(this,params);
+        for(Statement s:node.getBody())
+            s.accept(this,params);
+
+
+        return null;
+    }
+
+    @Override
+    public TR visit(Increment node, TP params) {
+
+        node.getExpression().accept(this,params);
+        return null;
+    }
+
+    @Override
+    public TR visit(Decrement node, TP params) {
+        node.getExpression().accept(this,params);
+        return null;
+    }
+
+    @Override
     public TR visit(ArrayType node, TP params) {
         node.getArrayType().accept(this, params);
 

@@ -10,5 +10,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="antlr-4.11.1-complete" level="project" />
     <orderEntry type="library" name="introspector-1.2" level="project" />
+    <orderEntry type="library" name="antlr-4.13.0-complete" level="project" />
+    <orderEntry type="library" name="antlr-4.13.0-complete (2)" level="project" />
   </component>
 </module>
